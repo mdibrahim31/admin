@@ -146,7 +146,7 @@ export const AdminPortal: React.FC = () => {
 
   const handleAdminLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || '123456';
+    const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
     if (adminPinInput === ADMIN_PASSWORD) {
       setIsAdminAuthenticated(true);
       if (typeof window !== 'undefined') {
@@ -154,7 +154,7 @@ export const AdminPortal: React.FC = () => {
       }
       setAdminAuthError('');
     } else {
-      setAdminAuthError('ভুল পাসওয়ার্ড/পিন। ডিফল্ট পিন: admin অথবা 123456');
+      setAdminAuthError('ভুল পাসওয়ার্ড/পিন!');
     }
   };
 
@@ -738,7 +738,7 @@ export const AdminPortal: React.FC = () => {
                   type="password"
                   value={adminPinInput}
                   onChange={(e) => setAdminPinInput(e.target.value)}
-                  placeholder="Enter PIN (default: admin or 123456)"
+                  placeholder="Enter PIN / Password"
                   className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-hidden focus:border-rose-500 text-sm font-mono"
                   autoFocus
                   required
@@ -756,20 +756,17 @@ export const AdminPortal: React.FC = () => {
               type="submit"
               className="w-full py-3.5 bg-rose-600 hover:bg-rose-700 active:scale-95 text-white font-black text-xs uppercase tracking-wider rounded-2xl shadow-md shadow-rose-600/30 transition cursor-pointer"
             >
-              Login to Admin Console
+              LOGIN TO ADMIN CONSOLE
             </button>
           </form>
 
           <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
             <span>Role: Super Admin</span>
-            <a href="./subadmin.html" className="text-rose-600 hover:underline">
-              Operations Sub-Admin &rarr;
-            </a>
           </div>
         </div>
       </div>
     );
-  }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 text-slate-900 pb-12 font-sans selection:bg-rose-500 selection:text-white">
