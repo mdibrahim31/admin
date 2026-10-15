@@ -146,7 +146,8 @@ export const AdminPortal: React.FC = () => {
 
   const handleAdminLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (adminPinInput === '123456' || adminPinInput.toLowerCase() === 'admin') {
+    const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || '123456';
+    if (adminPinInput === ADMIN_PASSWORD) {
       setIsAdminAuthenticated(true);
       if (typeof window !== 'undefined') {
         localStorage.setItem('foodiplace_admin_auth', 'true');
